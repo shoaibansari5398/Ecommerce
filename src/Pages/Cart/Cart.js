@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { CartContext } from "../../Context/CartContext"
+import ProductCard from "../../Components/ProductCard/ProductCard"
 
 export default function Cart(){
     const {cart} = useContext(CartContext)
@@ -7,13 +8,10 @@ export default function Cart(){
         <>
         {
             cart?.map((product)=>{
-                const {name,author,price} = product
                 return(
-                                    <div key={product.id}>
-                                        <p>{name}</p>
-                                        <p>{author}</p>
-                                        <p>${price}</p>
-                                    </div>
+                         <div>
+                            <ProductCard key={product.id} product={product}/>
+                        </div>
                 )
             })
         }

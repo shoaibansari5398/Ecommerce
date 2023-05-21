@@ -1,7 +1,7 @@
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import Cart from "./Pages/Cart/Cart";
-import LandingPage from "./Pages/LandingPage";
+import LandingPage from "./Components/Main/Content";
 import Mockman from "mockman-js";
 import { Routes,Route} from "react-router-dom";
 import Wishlist from "./Pages/Wishlist/Wishlist";
