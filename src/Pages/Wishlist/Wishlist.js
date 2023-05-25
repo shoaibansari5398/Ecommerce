@@ -1,7 +1,20 @@
+import { useContext } from "react"
+import ProductCard from "../../Components/ProductCard/ProductCard"
+import { WishlistContext } from "../../Context/WishlistContext"
+
 export default function Wishlist(){
-    return (
-            <div>
-                <h1>Wishlist</h1>
-            </div>
+    const {wishlist} = useContext(WishlistContext)
+    return(
+        <>
+        {
+            wishlist?.map((product)=>{
+                return(
+                         <div>
+                            <ProductCard key={product.id} product={product}/>
+                        </div>
+                )
+            })
+        }
+        </>
     )
 }

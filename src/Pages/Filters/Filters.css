@@ -1,0 +1,32 @@
+.filters-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 10px; */
+}
+.filters-container {
+  /* box-shadow: 0 0 5px 2px #ccc; */
+  border-right: 2px solid black;
+  padding: 5px 20px;
+}
+h4 {
+  margin: 20px 10px 5px 10px;
+}
+ul {
+  list-style: none;
+}
+li {
+  margin: 5px;
+}
+input {
+  margin-right: 5px;
+}
+.filters-rating {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.rating-input {
+  margin-left: 10px;
+}

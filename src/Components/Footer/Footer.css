@@ -1,0 +1,21 @@
+.footer {
+  box-shadow: 0 0 5px 0px #ccc;
+  /* display: flex; */
+  text-align: center;
+  padding: 10px;
+  background-color: antiquewhite;
+  /* position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  right: 0;
+  height: 50px; */
+}
+
+.footer-links {
+  margin: 5px;
+}
+.footer-links a {
+  margin: 5px;
+  text-decoration: none;
+}

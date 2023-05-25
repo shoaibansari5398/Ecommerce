@@ -1,13 +1,27 @@
 import { NavLink } from "react-router-dom";
+import { useState,useEffect,useContext } from "react";
 import "./Navbar.css"
-
+import { ProductContext } from "../../Context/ProductContext";
 export default function Header(){
+
+    const [searchText, setSearchText] = useState("");
+    const {state,productDispatch} = useContext(ProductContext);
+    
+    
+
     return(
             <div className="navbar">
                 <NavLink to="/" className="nav-direction">
                     <div>Ecomm</div>
                 </NavLink> 
-                <div><input className="search-input" placeholder="Search"></input></div>
+                <form>
+                <div>
+                    <input className="search-input" placeholder="Search" type="search" name="search" value={state.condition.search}
+                        
+                    />
+                    <button className="search-btn" type="submit">Search</button>
+                </div>
+                </form>
                 <div className="nav-features">
                     <ul className="nav-links">
                         <NavLink to="/login"  className="nav-direction">

@@ -30,7 +30,7 @@ export function CartProvider({ children }){
         // console.log(product)
         try {
             const res = await axios.post(`/api/user/cart`,{product},{headers:{authorization:encodedToken,},})
-            setCart(res.data.cart)
+            setCart(()=>res.data.cart)
         } catch (error) {
             console.error(error);
         }
