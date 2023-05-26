@@ -6,8 +6,8 @@ export default function Filters(){
     const [rangeValue, setRangeValue] = useState(1);
 
     const {state,productDispatch} = useContext(ProductContext)
-    
 
+    
     return (
         <>
             <div className="filters-container">
