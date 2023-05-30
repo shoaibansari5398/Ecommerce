@@ -1,4 +1,4 @@
-import { createContext, useState,useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const WishlistContext = createContext();
@@ -7,20 +7,20 @@ export const WishlistProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState([]);
   const encodedToken = localStorage.getItem("encodedToken");
 
-  const getWishlistData = async()=>{
+  const getWishlistData = async () => {
     try {
-        const response = await axios.get("/api/user/wishlist", {
-      headers: {
-        authorization: encodedToken,
-      },
-    });
-    setWishlist(response.data.wishlist);
+      const response = await axios.get("/api/user/wishlist", {
+        headers: {
+          authorization: encodedToken,
+        },
+      });
+      setWishlist(response.data.wishlist);
     } catch (error) {
-        console.error(error)
+      console.error(error);
     }
-  }
+  };
 
-  useEffect(()=>getWishlistData,[]);
+  useEffect(() => getWishlistData, []);
 
   const addToWishlistHandler = async (product) => {
     const response = await axios.post(
@@ -34,7 +34,7 @@ export const WishlistProvider = ({ children }) => {
         },
       }
     );
-    setWishlist(()=>response.data.wishlist);
+    setWishlist(() => response.data.wishlist);
   };
 
   const removeFromWishlistHandler = async (id) => {
@@ -46,7 +46,9 @@ export const WishlistProvider = ({ children }) => {
     setWishlist(response.data.wishlist);
   };
   return (
-    <WishlistContext.Provider value={{wishlist,addToWishlistHandler,removeFromWishlistHandler}}>
+    <WishlistContext.Provider
+      value={{ wishlist, addToWishlistHandler, removeFromWishlistHandler }}
+    >
       {children}
     </WishlistContext.Provider>
   );

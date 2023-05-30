@@ -61,7 +61,7 @@ export const products = [
     originalPrice: 1500,
     isBestSeller: false,
     category: "Non Fiction",
-    rating: 4,
+    rating: 5,
   },
   {
     _id: uuid(),

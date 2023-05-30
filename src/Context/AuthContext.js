@@ -43,7 +43,7 @@ export function AuthProvider({children}){
                 authDispatch({action:"LOGGED_IN_TRUE",payload:true});
                 authDispatch({action:"SET_USERDETAILS",payload:res?.data?.foundUser});
                 authDispatch({action:"SET_TOKEN",payload:res?.data?.encodedToken});
-                // alert("Login Successful");
+                alert("Login Successful");
                 navigate(location?.state?.from?.pathname ? location?.state?.from?.pathname : "/");
             }
         } catch (error) {

@@ -2,26 +2,28 @@ import { NavLink } from "react-router-dom";
 import { useState,useEffect,useContext } from "react";
 import "./Navbar.css"
 import { ProductContext } from "../../Context/ProductContext";
+import { FiltersContext } from "../../Context/FiltersContext";
 export default function Header(){
 
     const [searchText, setSearchText] = useState("");
     const {state,productDispatch} = useContext(ProductContext);
+    const {filterDispatch} = useContext(FiltersContext);
     
-    
+    useEffect(()=>{filterDispatch({type:"SEARCH",payload:searchText})},[searchText,filterDispatch]);
 
     return(
             <div className="navbar">
                 <NavLink to="/" className="nav-direction">
                     <div>Ecomm</div>
                 </NavLink> 
-                <form>
                 <div>
-                    <input className="search-input" placeholder="Search" type="search" name="search" value={state.condition.search}
-                        
-                    />
-                    <button className="search-btn" type="submit">Search</button>
+                <div>
+                    <input className="search-input" placeholder="Search" type="search" name="search" value={searchText}
+                        onChange={(e)=>setSearchText(e.target.value)} />
+                    {/* <button className="search-btn" type="submit">Search</button> */}
+                    {console.log(searchText)}
                 </div>
-                </form>
+                </div>
                 <div className="nav-features">
                     <ul className="nav-links">
                         <NavLink to="/login"  className="nav-direction">

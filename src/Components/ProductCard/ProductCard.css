@@ -12,6 +12,7 @@
 }
 img {
   max-width: 200px;
+  max-height: 250px;
   /* padding: 10px 0; */
   margin: 5px 0 5px 0;
 }
@@ -48,4 +49,7 @@ button {
 }
 .discount {
   color: green;
+}
+.book-title {
+  font-weight: 800px;
 }

@@ -1,4 +1,4 @@
-import {createContext,useEffect,useReducer} from "react"
+import { createContext, useEffect, useReducer } from "react";
 import axios from "axios";
 
 const productReducer = (state, action) => {
@@ -6,56 +6,55 @@ const productReducer = (state, action) => {
     case "SET_PRODUCTS": {
       return { ...state, products: action.payload };
     }
-    case "SEARCH": {
-      return {
-        ...state,
-        condition: { ...state.condition, search: action.payload },
-      };
+    case "SET_CATEGORY": {
+      return { ...state, categories: action.payload };
     }
     default:
+      return state;
   }
 };
 
-
 export const ProductContext = createContext();
 
-export function ProductProvider({children}){
-
+export function ProductProvider({ children }) {
   const initialState = {
     products: [],
-    condition: {
-      search: "",
-      price: null,
-      categories: [],
-      rating: null,
-    },
-  }
+    categories: [],
+  };
 
-  const [state,productDispatch] = useReducer(productReducer,initialState)
+  const [state, productDispatch] = useReducer(productReducer, initialState);
 
-  const getData=async()=>{
-    try{
+  const getData = async () => {
+    try {
       const res = await axios.get("/api/products");
       // console.log(res);
-      if(res.status===200)
-      {
-        productDispatch({type:"SET_PRODUCTS",payload:res.data.products})
+      if (res.status === 200) {
+        productDispatch({ type: "SET_PRODUCTS", payload: res.data.products });
       }
-    }catch(err){
-      console.log(err)
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
-  useEffect(()=>{
-    getData()
-  },[])
+  const getCategories = async () => {
+    try {
+      const res = await axios.get("/api/categories");
+      if (res.status === 200) {
+        productDispatch({ type: "SET_CATEGORY", payload: res.data.categories });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  
-  
+  useEffect(() => {
+    getData();
+    getCategories();
+  }, []);
 
   return (
-            <ProductContext.Provider value={{productDispatch,state}}>
-                {children}
-            </ProductContext.Provider>
-  )
+    <ProductContext.Provider value={{ productDispatch, state }}>
+      {children}
+    </ProductContext.Provider>
+  );
 }

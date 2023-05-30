@@ -18,7 +18,7 @@ export default function ProductCard({product}){
             <div className="card">
                 <div className="product-card">
                     <img src={img} alt={name}/>
-                    <h3>{name}</h3>
+                    <p className="book-title">{name}</p>
                     <span>
                     <p>{author}</p>
                     <p className="rating">{rating}
