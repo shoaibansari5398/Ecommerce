@@ -15,6 +15,14 @@ const filterReducer = (state, action) => {
       return { ...state, categoryFilter: action.payload };
     case "PRICE_SORT":
       return { ...state, sortByPriceFilter: action.payload };
+    case "CLEAR_ALL":
+      return {
+        search: "",
+        priceRange: 1000,
+        categoryFilter: [],
+        ratingFilter: "",
+        sortByPriceFilter: "",
+      };
     default:
       return state;
   }
