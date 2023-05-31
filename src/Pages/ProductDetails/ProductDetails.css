@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.product-details-container {
+  max-width: 550px;
+  margin: 40px auto;
+}
+.product-details {
+  display: flex;
+  /* border: 1px solid; */
+  box-shadow: 0px 0px 5px #bbb;
+  padding: 10px;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+.product-details-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  /* padding-left: 10px; */
+  max-width: 300px;
+  margin: 0 auto;
+}
+.product-details-category {
+  margin-top: 10px;
+}

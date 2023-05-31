@@ -53,7 +53,7 @@ export function ProductProvider({ children }) {
   }, []);
 
   return (
-    <ProductContext.Provider value={{ productDispatch, state }}>
+    <ProductContext.Provider value={{ productDispatch, state, getCategories }}>
       {children}
     </ProductContext.Provider>
   );

@@ -13,7 +13,12 @@ export default function Filters() {
           <div>
             <div className="filters-heading">
               <h4>Filters</h4>
-              <button type="submit" onClick={() => console.log("clicked")}>
+              <button
+                type="submit"
+                onClick={() =>
+                  filterDispatch({ type: "CLEAR_ALL", payload: "" })
+                }
+              >
                 Clear
               </button>
             </div>

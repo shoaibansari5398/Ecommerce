@@ -3,6 +3,7 @@ import { ProductContext } from "../../Context/ProductContext";
 import { FiltersContext } from "../../Context/FiltersContext";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import "./Products.css";
+import { NavLink } from "react-router-dom";
 
 export default function Products() {
   const { state } = useContext(ProductContext);

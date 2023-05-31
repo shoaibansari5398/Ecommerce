@@ -22,6 +22,6 @@ export const categories = [
     _id: uuid(),
     category: "Self Help",
     description:
-      "Meant to cause discomfort and fear for both the character and readers.",
+      "Meant to cause discomfort and fear for both the character and readers.But reading you'll get knowledge.",
   },
 ];
