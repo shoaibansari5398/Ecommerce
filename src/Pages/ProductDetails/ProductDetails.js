@@ -1,10 +1,24 @@
 import "./ProductDetails.css";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { CartContext } from "../../Context/CartContext";
+import { WishlistContext } from "../../Context/WishlistContext";
+import { NavLink } from "react-router-dom";
+
 export default function ProductDetails() {
   const [selectedProduct, setSelectedProduct] = useState("");
   const { id } = useParams();
+
+  const { cart, addToCartHandler } = useContext(CartContext);
+  const { wishlist, addToWishlistHandler } = useContext(WishlistContext);
+
+  const productAvailableInCart = cart.some(
+    (e) => e._id === selectedProduct?.id
+  );
+  const productAvailableInWishlist = wishlist.some(
+    (e) => e._id === selectedProduct?.id
+  );
 
   useEffect(() => {
     (async () => {
@@ -47,8 +61,25 @@ export default function ProductDetails() {
             </p>
           </div>
           <div className="btn">
-            <button className="">Add To CART</button>
-            <button className="">add to wishlist</button>
+            {productAvailableInCart ? (
+              <NavLink to="/cart">
+                <button>Go To Cart</button>
+              </NavLink>
+            ) : (
+              <button onClick={() => addToCartHandler(selectedProduct)}>
+                Add to Cart
+              </button>
+            )}
+
+            {productAvailableInWishlist ? (
+              <NavLink to="/wishlist">
+                <button>Go To Wishlist</button>
+              </NavLink>
+            ) : (
+              <button onClick={() => addToWishlistHandler(selectedProduct)}>
+                Add to Wishlist
+              </button>
+            )}
           </div>
           <p className="product-details-category">Category: {category}</p>
         </div>
