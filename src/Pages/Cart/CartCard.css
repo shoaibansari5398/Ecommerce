@@ -1,0 +1,18 @@
+.product-details-card {
+  display: flex;
+  max-width: 500px;
+  gap: 20px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: #ccc 0px 5px 15px;
+}
+
+.details {
+  margin-top: 10px;
+}
+
+.cart-quantity {
+  display: flex;
+  margin: 10px 0;
+}

@@ -6,16 +6,27 @@ export const CartContext = createContext();
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
 
+  const [totalprice, setTotalPrice] = useState(0);
+  const [totalDiscount, setTotalDiscount] = useState(0);
+
   const encodedToken = localStorage.getItem("encodedToken");
+
+  const updateTotalPrice = (cart) => {
+    setTotalPrice(() =>
+      cart.reduce((acc, curr) => {
+        return +(curr.price * curr.qty) + acc;
+      }, 0)
+    );
+  };
 
   const getCartData = async () => {
     try {
-      const res = await axios.get("/api/user/cart", {
+      const response = await axios.get("/api/user/cart", {
         headers: {
           authorization: encodedToken,
         },
       });
-      console.log(res.data.cart);
+      console.log(response.data.cart);
     } catch (error) {
       console.error(error);
     }
@@ -25,19 +36,23 @@ export function CartProvider({ children }) {
   }, []);
 
   const addToCartHandler = async (product) => {
-    // console.log(product)
     try {
-      const res = await axios.post(
+      const response = await axios.post(
         `/api/user/cart`,
         { product },
         { headers: { authorization: encodedToken } }
       );
-      setCart(() => res.data.cart);
+      setCart(() => response.data.cart);
+      // console.log(response.data.cart);
+      updateTotalPrice(response.data.cart);
+      // console.log(totalprice);
     } catch (error) {
       console.error(error);
     }
   };
-
+  {
+    // console.log(totalprice);
+  }
   const deleteCartHandler = async (id) => {
     const response = await axios.delete(`/api/user/cart/${id}`, {
       headers: {
@@ -45,10 +60,60 @@ export function CartProvider({ children }) {
       },
     });
     setCart(response.data.cart);
+    // updateTotalPrice(response.data.cart);
+  };
+
+  const increaseQuantity = async (id) => {
+    try {
+      const response = await axios.post(
+        "/api/user/cart/" + id,
+        {
+          action: {
+            type: "increment",
+          },
+        },
+        {
+          headers: { authorization: encodedToken },
+        }
+      );
+      setCart(response.data.cart);
+      // updateTotalPrice(response.data.cart);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  const decreaseQuantity = async (id) => {
+    try {
+      const response = await axios.post(
+        "/api/user/cart/" + id,
+        {
+          action: {
+            type: "decrement",
+          },
+        },
+        {
+          headers: { authorization: encodedToken },
+        }
+      );
+      setCart(response.data.cart);
+      // console.log(totalprice);
+      // updateTotalPrice(response.data.cart);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
-    <CartContext.Provider value={{ addToCartHandler, cart, deleteCartHandler }}>
+    <CartContext.Provider
+      value={{
+        addToCartHandler,
+        cart,
+        deleteCartHandler,
+        increaseQuantity,
+        decreaseQuantity,
+        totalprice,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
