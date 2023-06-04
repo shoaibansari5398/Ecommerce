@@ -18,7 +18,6 @@ export default function CartDetails() {
           <span>${product.price * product.qty}</span>
         </div>
       ))}
-
       {console.log(totalPrice)}
 
       <div className="cart-total-amount">
