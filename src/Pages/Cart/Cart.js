@@ -11,7 +11,9 @@ export default function Cart() {
   return (
     <div>
       {cart.length < 1 ? (
-        <h2>Your Cart is Empty. Please add items in your Cart!</h2>
+        <h2 className="empty-cart-msg">
+          Your Cart is Empty. Please add items in your Cart!
+        </h2>
       ) : (
         <div className="cart-container">
           <div className="cards">
