@@ -10,12 +10,15 @@ import Wishlist from "./Pages/Wishlist/Wishlist";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/SignUp/Signup";
 import ProductDetails from "./Pages/ProductDetails/ProductDetails";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       {/* <Home /> */}
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<LandingPage />} />

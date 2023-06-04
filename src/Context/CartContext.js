@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import toastHandler from "../Components/Notification/Toaster";
 
 export const CartContext = createContext();
 
@@ -45,6 +46,7 @@ export function CartProvider({ children }) {
       setCart(() => response.data.cart);
       // console.log(response.data.cart);
       updateTotalPrice(response.data.cart);
+      toastHandler("success", "Added to the Cart");
       // console.log(totalprice);
     } catch (error) {
       console.error(error);
@@ -60,6 +62,7 @@ export function CartProvider({ children }) {
       },
     });
     setCart(response.data.cart);
+    toastHandler("success", "Item removed successfully");
     // updateTotalPrice(response.data.cart);
   };
 

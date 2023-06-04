@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import toastHandler from "../Components/Notification/Toaster";
 
 export const WishlistContext = createContext();
 
@@ -35,6 +36,7 @@ export const WishlistProvider = ({ children }) => {
       }
     );
     setWishlist(() => response.data.wishlist);
+    toastHandler("success", "Added to the Wishlist");
   };
 
   const removeFromWishlistHandler = async (id) => {
@@ -44,6 +46,7 @@ export const WishlistProvider = ({ children }) => {
       },
     });
     setWishlist(response.data.wishlist);
+    toastHandler("success", "Item removed successfully");
   };
   return (
     <WishlistContext.Provider
