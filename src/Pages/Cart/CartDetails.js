@@ -24,9 +24,9 @@ export default function CartDetails() {
         <span>Total Amount</span>
         <span>${totalPrice}</span>
       </div>
-      {/* <NavLink to="/checkout"> */}
-      <button>PLACE ORDER</button>
-      {/* </NavLink> */}
+      <NavLink to="/checkout">
+        <button className="order-button">PLACE ORDER</button>
+      </NavLink>
     </div>
   );
 }

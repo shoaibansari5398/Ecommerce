@@ -12,6 +12,7 @@ import Signup from "./Pages/SignUp/Signup";
 import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Account from "./Pages/Account/Account";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Signup />} />
+        <Route path="/account" element={<Account />} />
         <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
       <Footer />

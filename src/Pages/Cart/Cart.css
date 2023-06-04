@@ -10,6 +10,8 @@
   padding: 20px;
   border-radius: 5px;
   height: 250px;
+  display: flex;
+  flex-direction: column;
 }
 
 .selected-product {
@@ -22,7 +24,11 @@
   gap: 20px;
 }
 
-h2 {
+.empty-cart-msg {
   text-align: center;
   margin: 200px;
+}
+.cart-total-amount {
+  display: flex;
+  justify-content: space-between;
 }
