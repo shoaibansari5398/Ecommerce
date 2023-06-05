@@ -12,14 +12,10 @@ export default function ProductDetails() {
 
   const { cart, addToCartHandler } = useContext(CartContext);
   const { wishlist, addToWishlistHandler } = useContext(WishlistContext);
-
-  const productAvailableInCart = cart.some(
-    (e) => e._id === selectedProduct?.id
-  );
-  const productAvailableInWishlist = wishlist.some(
-    (e) => e._id === selectedProduct?.id
-  );
-
+  console.log("cart", cart);
+  const productAvailableInCart = cart.some((e) => e._id == id);
+  const productAvailableInWishlist = wishlist.some((e) => e._id == id);
+  console.log(productAvailableInCart, "productAvailableInCart");
   useEffect(() => {
     (async () => {
       try {

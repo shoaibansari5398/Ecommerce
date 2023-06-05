@@ -3,11 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
-import { BrowserRouter as Router } from "react-router-dom"
+import { BrowserRouter as Router } from "react-router-dom";
 
 import { ProductProvider } from "./Context/ProductContext";
 import { AuthProvider } from "./Context/AuthContext";
 import { CartProvider } from "./Context/CartContext";
+import { AddressProvider } from "./Context/AddressContext";
 import { WishlistProvider } from "./Context/WishlistContext";
 import FiltersProvider from "./Context/FiltersContext";
 // Call make Server
@@ -21,7 +22,9 @@ ReactDOM.render(
           <CartProvider>
             <WishlistProvider>
               <FiltersProvider>
+                {/* <AddressProvider> */}
                 <App />
+                {/* </AddressProvider> */}
               </FiltersProvider>
             </WishlistProvider>
           </CartProvider>

@@ -5,18 +5,21 @@ import { ProductContext } from "../../Context/ProductContext";
 import { FiltersContext } from "../../Context/FiltersContext";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
+import { loginHandler } from "../../backend/controllers/AuthController";
 
 export default function Header() {
   const [searchText, setSearchText] = useState("");
   const { state, productDispatch } = useContext(ProductContext);
   const { filterDispatch } = useContext(FiltersContext);
   const navigate = useNavigate();
-  const { isLoggedIn, logoutHandler } = useContext(AuthContext);
+  const { authState, logoutHandler } = useContext(AuthContext);
 
   useEffect(() => {
     filterDispatch({ type: "SEARCH", payload: searchText });
   }, [searchText, filterDispatch]);
 
+  useEffect(() => console.log("authState", authState), [authState]);
+  console.log(authState.isLoggedIn);
   return (
     <div className="navbar">
       <NavLink to="/" className="nav-direction">
@@ -39,15 +42,15 @@ export default function Header() {
       </div>
       <div className="nav-features">
         <ul className="nav-links">
-          {!isLoggedIn ? (
-            <NavLink to="/login" className="nav-direction">
-              <li className="login-btn">Login</li>
-            </NavLink>
-          ) : (
+          {authState?.isLoggedIn ? (
             <NavLink to="/login" className="nav-direction">
               <li className="login-btn" onClick={logoutHandler}>
                 Logout
               </li>
+            </NavLink>
+          ) : (
+            <NavLink to="/login" className="nav-direction">
+              <li className="login-btn">Login</li>
             </NavLink>
           )}
           <NavLink to="/wishlist" className="nav-direction">

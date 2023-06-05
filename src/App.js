@@ -13,6 +13,8 @@ import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Account from "./Pages/Account/Account";
+import Address from "./Pages/Account/Address";
+import Profile from "./Pages/Account/Profile";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/address" element={<Address />} />
         <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
       <Footer />

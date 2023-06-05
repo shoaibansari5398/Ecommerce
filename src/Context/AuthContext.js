@@ -7,9 +7,13 @@ import toastHandler from "../Components/Notification/Toaster";
 export const AuthContext = createContext();
 
 const authReducer = (state, action) => {
+  console.log(action);
   switch (action.type) {
     case "LOGGED_IN_TRUE":
-      return { ...state, isLoggedIn: action.payload };
+      return {
+        ...state,
+        isLoggedIn: true,
+      };
     case "LOGGED_IN_FALSE":
       return { ...state, isLoggedIn: action.payload };
     case "SET_USERDETAILS":
@@ -24,34 +28,35 @@ const authReducer = (state, action) => {
 export function AuthProvider({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const initialData = {
     isLoggedIn: false,
-    userDetails: "",
+    userDetails: {},
     token: "",
   };
 
   const [authState, authDispatch] = useReducer(authReducer, initialData);
-
+  useEffect(() => console.log(authState), [authState]);
   const loginHandler = async (loginData) => {
     try {
       const res = await axios.post("/api/auth/login", loginData);
-      if (res.status === 200) {
+      if (res?.status == 200) {
         localStorage.setItem("token", res?.data?.encodedToken);
-        authDispatch({ action: "LOGGED_IN_TRUE", payload: true });
-        authDispatch({
-          action: "SET_USERDETAILS",
-          payload: res?.data?.foundUser,
-        });
-        authDispatch({ action: "SET_TOKEN", payload: res?.data?.encodedToken });
+        authDispatch({ type: "LOGGED_IN_TRUE", payload: true });
+        // authDispatch({
+        //   type: "SET_USERDETAILS",
+        //   payload: res?.data?.foundUser,
+        // });
+        // authDispatch({ type: "SET_TOKEN", payload: res?.data?.encodedToken });
         navigate(
           location?.state?.from?.pathname
             ? location?.state?.from?.pathname
             : "/"
         );
-        setIsLoggedIn(true);
+        // setIsLoggedIn(true);
         toastHandler("success", "You are now logged in");
+        console.log(res);
       }
     } catch (error) {
       authDispatch({ action: "LOGGED_IN_FALSE", payload: false });
@@ -74,7 +79,7 @@ export function AuthProvider({ children }) {
         authDispatch({ action: "SET_TOKEN", payload: res?.data?.encodedToken });
         alert("Sign up Successful");
         navigate("/");
-        setIsLoggedIn(true);
+        // setIsLoggedIn(true);
         toastHandler("success", "Sign up Successful");
       }
     } catch (error) {
@@ -86,14 +91,15 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const logoutHandler = async () => {
+  const logoutHandler = () => {
     localStorage.removeItem("token");
-    authDispatch({ type: "SET_LOGGEDIN_FALSE", payload: false });
+    authDispatch({ type: "SET_LOGGED_IN_FALSE", payload: false });
     authDispatch({ type: "SET_USERDETAILS", payload: {} });
     authDispatch({ type: "SET_TOKEN", payload: "" });
     toastHandler("success", "You are now logged out!");
     // alert("You're logged out!");
     navigate("/");
+    // setIsLoggedIn(false);
   };
 
   return (
@@ -103,7 +109,7 @@ export function AuthProvider({ children }) {
         loginHandler,
         signupHandler,
         logoutHandler,
-        isLoggedIn,
+        // isLoggedIn,
       }}
     >
       {children}
