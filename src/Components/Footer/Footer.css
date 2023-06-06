@@ -3,9 +3,13 @@
 
   text-align: center;
   padding: 10px;
-  background-color: antiquewhite;
-
-  margin-top: auto;
+  background-color: beige;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
 }
 
 .footer-links {
