@@ -17,6 +17,7 @@ import Address from "./Pages/Account/Address";
 import Profile from "./Pages/Account/Profile";
 import Checkout from "./Pages/Checkout/Checkout";
 import RequireAuth from "./Components/RequireAuth/RequireAuth";
+import Order from "./Pages/Order/Order";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/address" element={<Address />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order" element={<Order />} />
         <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
       <Footer />

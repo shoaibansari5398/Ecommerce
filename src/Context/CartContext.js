@@ -13,16 +13,20 @@ export function CartProvider({ children }) {
   const encodedToken = localStorage.getItem("encodedToken");
 
   const updateTotalPrice = (cart) => {
-    // setTotalPrice(() =>
-    //   cart.reduce((acc, curr) => {
-    //     return +(curr.price * curr.qty) + acc;
-    //   }, 0)
-    // );
     const tprice = cart.reduce((acc, curr) => {
       return +(curr.price * curr.qty) + acc;
     }, 0);
     setTotalPrice(tprice);
-    // console.log(totalPrice);
+  };
+
+  const updateTotalDiscount = (cart) => {
+    setTotalDiscount(() =>
+      cart.reduce(
+        (acc, cur) =>
+          (Number(cur.price) - Number(cur.oldPrice)) * Number(cur.qty) + acc,
+        0
+      )
+    );
   };
 
   const getCartData = async () => {
@@ -49,17 +53,13 @@ export function CartProvider({ children }) {
         { headers: { authorization: encodedToken } }
       );
       setCart(() => response.data.cart);
-      // console.log(response.data.cart);
       updateTotalPrice(response.data.cart);
+      updateTotalDiscount(response.data.cart);
       toastHandler("success", "Added to the Cart");
-      // console.log(totalprice);
     } catch (error) {
       console.error(error);
     }
   };
-  {
-    // console.log(totalprice);
-  }
   const deleteCartHandler = async (id) => {
     const response = await axios.delete(`/api/user/cart/${id}`, {
       headers: {
@@ -69,6 +69,7 @@ export function CartProvider({ children }) {
     setCart(response.data.cart);
     toastHandler("success", "Item removed successfully");
     updateTotalPrice(response.data.cart);
+    updateTotalDiscount(response.data.cart);
   };
 
   const increaseQuantity = async (id) => {
@@ -86,6 +87,7 @@ export function CartProvider({ children }) {
       );
       setCart(response.data.cart);
       updateTotalPrice(response.data.cart);
+      updateTotalDiscount(response.data.cart);
     } catch (e) {
       console.error(e);
     }
@@ -104,8 +106,8 @@ export function CartProvider({ children }) {
         }
       );
       setCart(response.data.cart);
-      // console.log(totalprice);
       updateTotalPrice(response.data.cart);
+      updateTotalDiscount(response.data.cart);
     } catch (e) {
       console.error(e);
     }
@@ -120,6 +122,7 @@ export function CartProvider({ children }) {
         increaseQuantity,
         decreaseQuantity,
         totalPrice,
+        totalDiscount,
       }}
     >
       {children}

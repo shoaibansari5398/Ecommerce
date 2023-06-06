@@ -8,7 +8,7 @@ import "./Account.css";
 
 export default function Account() {
   // const { address, setAddress } = useContext(AdddressContext);
-  // const { authState } = useContext(AuthContext);
+  const { authState } = useContext(AuthContext);
   return (
     // <div className="account-container">
     //   <NavLink to="/profile">Profile</NavLink>
