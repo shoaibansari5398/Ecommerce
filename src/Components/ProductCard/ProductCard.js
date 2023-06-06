@@ -6,17 +6,7 @@ import { WishlistContext } from "../../Context/WishlistContext";
 import { useContext } from "react";
 
 export default function ProductCard({ product }) {
-  const {
-    _id,
-    img,
-    name,
-    author,
-    price,
-    originalPrice,
-    isBestSeller,
-    category,
-    rating,
-  } = product;
+  const { _id, img, name, author, price, originalPrice, rating } = product;
   const { cart, addToCartHandler } = useContext(CartContext);
   const { wishlist, addToWishlistHandler } = useContext(WishlistContext);
 

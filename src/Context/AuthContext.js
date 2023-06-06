@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, useReducer } from "react";
+import { createContext, useEffect, useReducer } from "react";
 
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -38,7 +38,7 @@ export function AuthProvider({ children }) {
   const loginHandler = async (loginData) => {
     try {
       const res = await axios.post("/api/auth/login", loginData);
-      if (res?.status == 200) {
+      if (res?.status === 200) {
         localStorage.setItem("token", res?.data?.encodedToken);
         authDispatch({ type: "LOGGED_IN_TRUE", payload: true });
         authDispatch({

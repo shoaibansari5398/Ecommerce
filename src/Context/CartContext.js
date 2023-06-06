@@ -43,7 +43,7 @@ export function CartProvider({ children }) {
   };
   useEffect(() => {
     getCartData();
-  }, []);
+  });
 
   const addToCartHandler = async (product) => {
     try {

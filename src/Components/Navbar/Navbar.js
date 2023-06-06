@@ -1,15 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import "./Navbar.css";
-import { ProductContext } from "../../Context/ProductContext";
 import { FiltersContext } from "../../Context/FiltersContext";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
-import { loginHandler } from "../../backend/controllers/AuthController";
 
 export default function Header() {
   const [searchText, setSearchText] = useState("");
-  const { state, productDispatch } = useContext(ProductContext);
   const { filterDispatch } = useContext(FiltersContext);
   const navigate = useNavigate();
   const { authState, logoutHandler } = useContext(AuthContext);
