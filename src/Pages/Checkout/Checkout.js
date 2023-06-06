@@ -20,7 +20,7 @@ export default function Checkout() {
         <h4>Order Details</h4>
         <p>
           <span>Total Price: </span>
-          <span>{totalPrice}</span>
+          <span>${totalPrice}</span>
         </p>
         <NavLink to="/order">
           <button className="order-button">CHECKOUT</button>
