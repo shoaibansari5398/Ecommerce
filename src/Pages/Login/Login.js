@@ -32,16 +32,16 @@ export default function Login() {
 
   return (
     <>
-      <div class="login-container">
+      <div className="login-container">
         <h1>Login Page</h1>
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           placeholder="a.b@c.com"
           value={userData.email}
           onChange={(e) => setUserData({ ...userData, email: e.target.value })}
         />
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           id="password"
