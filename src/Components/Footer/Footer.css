@@ -5,13 +5,13 @@
   text-align: center;
   padding: 10px;
   background-color: antiquewhite;
-  position: fixed;
+  /* position: fixed;
   bottom: 0;
   right: 0;
   left: 0;
   right: 0;
-  height: 50px;
-  margin-top: -10px;
+  height: 50px; */
+  margin-top: auto;
 }
 
 .footer-links {
