@@ -23,15 +23,7 @@ export default function Checkout() {
           <span>{totalPrice}</span>
         </p>
         <NavLink to="/order">
-          <button
-            className="order-button"
-            // onClick={toastHandler(
-            //   "success",
-            //   "Your order is placed successfully"
-            // )}
-          >
-            CHECKOUT
-          </button>
+          <button className="order-button">CHECKOUT</button>
         </NavLink>
       </div>
     </div>

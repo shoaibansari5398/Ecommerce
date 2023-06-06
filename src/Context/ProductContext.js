@@ -27,7 +27,6 @@ export function ProductProvider({ children }) {
   const getData = async () => {
     try {
       const res = await axios.get("/api/products");
-      // console.log(res);
       if (res.status === 200) {
         productDispatch({ type: "SET_PRODUCTS", payload: res.data.products });
       }

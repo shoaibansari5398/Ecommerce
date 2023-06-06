@@ -18,7 +18,6 @@ export default function Header() {
     filterDispatch({ type: "SEARCH", payload: searchText });
   }, [searchText, filterDispatch]);
 
-  // useEffect(() => console.log("authState", authState), [authState]);s
   console.log(authState.isLoggedIn);
   return (
     <div className="navbar">

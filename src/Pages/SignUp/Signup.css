@@ -1,7 +1,6 @@
 .signup-container {
   display: flex;
   flex-direction: column;
-  /* border: 1px solid black; */
   align-items: center;
   margin: 80px auto;
   box-shadow: 0 0 5px 2px #ccc;

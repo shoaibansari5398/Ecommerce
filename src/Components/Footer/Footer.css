@@ -1,16 +1,10 @@
 .footer {
   box-shadow: 0 0 5px 0px #ccc;
-  /* display: flex;
-  flex-shrink: 0; */
+
   text-align: center;
   padding: 10px;
   background-color: antiquewhite;
-  /* position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  right: 0;
-  height: 50px; */
+
   margin-top: auto;
 }
 

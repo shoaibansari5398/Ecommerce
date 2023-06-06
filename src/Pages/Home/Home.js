@@ -30,7 +30,6 @@ export default function Home() {
           </div>
         ))
       )}
-      {/* {console.log(state.categories)} */}
     </div>
   );
 }

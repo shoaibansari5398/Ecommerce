@@ -62,10 +62,7 @@ export default function ProductCard({ product }) {
             Add to Wishlist
           </button>
         )}
-        {
-          // console.log(productAvailableInWishlist)
-          console.log(productAvailableInCart)
-        }
+        {console.log(productAvailableInCart)}
       </div>
     </div>
   );
