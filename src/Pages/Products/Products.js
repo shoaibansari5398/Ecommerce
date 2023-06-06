@@ -4,6 +4,7 @@ import { FiltersContext } from "../../Context/FiltersContext";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import "./Products.css";
 import { NavLink } from "react-router-dom";
+import Loader from "../../Components/Loader/Loader";
 
 export default function Products() {
   const { state } = useContext(ProductContext);
@@ -11,7 +12,9 @@ export default function Products() {
 
   return (
     <div className="container">
-      {sortByPriceFilterHandler.length > 0 ? (
+      {sortByPriceFilterHandler.length === 0 ? (
+        <Loader />
+      ) : sortByPriceFilterHandler.length > 0 ? (
         sortByPriceFilterHandler?.map((product) => {
           return (
             <div>

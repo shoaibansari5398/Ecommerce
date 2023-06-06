@@ -18,12 +18,12 @@ export default function Header() {
     filterDispatch({ type: "SEARCH", payload: searchText });
   }, [searchText, filterDispatch]);
 
-  useEffect(() => console.log("authState", authState), [authState]);
+  // useEffect(() => console.log("authState", authState), [authState]);s
   console.log(authState.isLoggedIn);
   return (
     <div className="navbar">
       <NavLink to="/" className="nav-direction">
-        <div>Ecomm</div>
+        <div className="website-name">BookShelf</div>
       </NavLink>
       <div>
         <div>
@@ -44,7 +44,7 @@ export default function Header() {
         <ul className="nav-links">
           {authState?.isLoggedIn ? (
             <NavLink to="/login" className="nav-direction">
-              <li className="login-btn" onClick={logoutHandler}>
+              <li className="logout-btn " onClick={logoutHandler}>
                 Logout
               </li>
             </NavLink>

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../../Context/ProductContext";
 import "./Home.css";
 import { FiltersContext } from "../../Context/FiltersContext";
+import Loader from "../../Components/Loader/Loader";
 
 export default function Home() {
   const { state } = useContext(ProductContext);
@@ -16,15 +17,19 @@ export default function Home() {
 
   return (
     <div className="books-container">
-      {state?.categories.map(({ category, description }) => (
-        <div
-          className="book-categories"
-          onClick={() => categoryHandler(category)}
-        >
-          <h3>{category}</h3>
-          <p>{description}</p>
-        </div>
-      ))}
+      {state?.categories.length === 0 ? (
+        <Loader />
+      ) : (
+        state?.categories.map(({ category, description }) => (
+          <div
+            className="book-categories"
+            onClick={() => categoryHandler(category)}
+          >
+            <h3>{category}</h3>
+            <p>{description}</p>
+          </div>
+        ))
+      )}
       {/* {console.log(state.categories)} */}
     </div>
   );

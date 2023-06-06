@@ -57,7 +57,7 @@ export default function FiltersProvider({ children }) {
 
   const categoryFilterHandler =
     filterState?.categoryFilter?.length > 0
-      ? priceRangeFilterHandler(({ category }) =>
+      ? priceRangeFilterHandler.filter(({ category }) =>
           filterState?.categoryFilter?.includes(category)
         )
       : priceRangeFilterHandler;

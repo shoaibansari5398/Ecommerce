@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 import { WishlistContext } from "../../Context/WishlistContext";
 import { NavLink } from "react-router-dom";
+import Loader from "../../Components/Loader/Loader";
 
 export default function ProductDetails() {
   const [selectedProduct, setSelectedProduct] = useState("");
@@ -41,7 +42,9 @@ export default function ProductDetails() {
     rating,
   } = selectedProduct;
 
-  return (
+  return selectedProduct.length === 0 ? (
+    <Loader />
+  ) : (
     <div className="product-details-container">
       <div className="product-details">
         <img src={img} />
@@ -59,7 +62,7 @@ export default function ProductDetails() {
           <div className="btn">
             {productAvailableInCart ? (
               <NavLink to="/cart">
-                <button>Go To Cart</button>
+                <button className="btn-clicked">Go To Cart</button>
               </NavLink>
             ) : (
               <button onClick={() => addToCartHandler(selectedProduct)}>
@@ -69,7 +72,7 @@ export default function ProductDetails() {
 
             {productAvailableInWishlist ? (
               <NavLink to="/wishlist">
-                <button>Go To Wishlist</button>
+                <button className="btn-clicked">Go To Wishlist</button>
               </NavLink>
             ) : (
               <button onClick={() => addToWishlistHandler(selectedProduct)}>

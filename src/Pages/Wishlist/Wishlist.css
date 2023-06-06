@@ -5,3 +5,7 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.empty-wishlist {
+  margin: 200px;
+  text-align: center;
+}

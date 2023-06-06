@@ -43,7 +43,7 @@ export default function WishlistCard({ product }) {
           </button>
           {productAvailableInCart ? (
             <NavLink to="/cart">
-              <button>Go To Cart</button>
+              <button className="btn-clicked">Go To Cart</button>
             </NavLink>
           ) : (
             <button onClick={() => addToCartHandler(product)}>

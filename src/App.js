@@ -15,6 +15,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Account from "./Pages/Account/Account";
 import Address from "./Pages/Account/Address";
 import Profile from "./Pages/Account/Profile";
+import Checkout from "./Pages/Checkout/Checkout";
+import RequireAuth from "./Components/RequireAuth/RequireAuth";
 
 function App() {
   return (
@@ -26,13 +28,35 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<LandingPage />} />
         <Route path="/mockman" element={<Mockman />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<Wishlist />} />
+        <Route
+          path="/cart"
+          element={
+            <RequireAuth>
+              <Cart />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <RequireAuth>
+              <Wishlist />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Signup />} />
-        <Route path="/account" element={<Account />} />
+        <Route
+          path="/account"
+          element={
+            <RequireAuth>
+              <Account />
+            </RequireAuth>
+          }
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/address" element={<Address />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/products/:id" element={<ProductDetails />} />
       </Routes>
       <Footer />

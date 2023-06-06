@@ -1,5 +1,5 @@
 import "./ProductCard.css";
-import "boxicons";
+import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 import { WishlistContext } from "../../Context/WishlistContext";
@@ -26,12 +26,14 @@ export default function ProductCard({ product }) {
   return (
     <div className="card">
       <div className="product-card">
-        <NavLink to={`/products/${_id}`}>
+        <NavLink to={`/products/${_id}`} className="product-card-nav">
           <img src={img} alt={name} />
           <p className="book-title">{name}</p>
           <span>
             <p>{author}</p>
-            <p className="rating">{rating}</p>
+            <p className="rating">
+              {rating} <StarBorderRoundedIcon />
+            </p>
           </span>
           <div className="price">
             <span>
@@ -45,7 +47,7 @@ export default function ProductCard({ product }) {
         </NavLink>
         {productAvailableInCart ? (
           <NavLink to="/cart">
-            <button>Go To Cart</button>
+            <button className="btn-clicked">Go To Cart</button>
           </NavLink>
         ) : (
           <button onClick={() => addToCartHandler(product)}>Add to Cart</button>
@@ -53,7 +55,7 @@ export default function ProductCard({ product }) {
 
         {productAvailableInWishlist ? (
           <NavLink to="/wishlist">
-            <button>Go To Wishlists</button>
+            <button className="btn-clicked">Go To Wishlists</button>
           </NavLink>
         ) : (
           <button onClick={() => addToWishlistHandler(product)}>

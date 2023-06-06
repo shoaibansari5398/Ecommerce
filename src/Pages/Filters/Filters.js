@@ -15,6 +15,7 @@ export default function Filters() {
               <h4>Filters</h4>
               <button
                 type="submit"
+                className="btn-clicked"
                 onClick={() =>
                   filterDispatch({ type: "CLEAR_ALL", payload: "" })
                 }

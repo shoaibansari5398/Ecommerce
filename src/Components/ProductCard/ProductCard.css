@@ -31,6 +31,7 @@ button {
   margin: 5px;
   cursor: pointer;
 }
+
 .price {
   display: flex;
   justify-content: space-between;
@@ -46,10 +47,20 @@ button {
 }
 .rating {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .discount {
   color: green;
 }
 .book-title {
   font-weight: 800px;
+}
+.product-card-nav {
+  text-decoration: none;
+  color: black;
+}
+.btn-clicked {
+  background-color: white;
+  border: 1px solid #1a73e8;
 }

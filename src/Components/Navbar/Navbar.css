@@ -13,7 +13,13 @@
 }
 .login-btn {
   background-color: #1a73e8;
-  /* border-radius: 5px; */
+  border-radius: 5px;
+  border: none;
+  padding: 5px 15px;
+}
+.logout-btn {
+  background-color: rgb(26, 115, 232, 0.6);
+  border-radius: 5px;
   border: none;
   padding: 5px 15px;
 }
@@ -23,9 +29,14 @@
   justify-content: space-evenly;
   align-items: center;
 }
-NavLink {
-  text-decoration: none;
-}
+
 .nav-direction {
   text-decoration: none;
+  color: black;
+}
+.nav-direction,
+.website-name {
+  font-family: "Dancing Script", cursive;
+  font-family: "Rubik", sans-serif;
+  font-size: large;
 }
