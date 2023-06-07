@@ -1,9 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ProductContext } from "../../Context/ProductContext";
 import { FiltersContext } from "../../Context/FiltersContext";
 import "./Filters.css";
 export default function Filters() {
-  const { state, productDispatch } = useContext(ProductContext);
+  const { state } = useContext(ProductContext);
   const { filterState, filterDispatch } = useContext(FiltersContext);
 
   return (

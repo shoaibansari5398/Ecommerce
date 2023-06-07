@@ -1,7 +1,6 @@
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Pages/Home/Home";
-import Footer from "./Components/Footer/Footer";
 import Cart from "./Pages/Cart/Cart";
 import LandingPage from "./Components/Main/Content";
 import Mockman from "mockman-js";

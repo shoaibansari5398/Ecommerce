@@ -14,8 +14,8 @@ export default function ProductDetails() {
   const { cart, addToCartHandler } = useContext(CartContext);
   const { wishlist, addToWishlistHandler } = useContext(WishlistContext);
   console.log("cart", cart);
-  const productAvailableInCart = cart.some((e) => e._id == id);
-  const productAvailableInWishlist = wishlist.some((e) => e._id == id);
+  const productAvailableInCart = cart.some((e) => e._id === id);
+  const productAvailableInWishlist = wishlist.some((e) => e._id === id);
   console.log(productAvailableInCart, "productAvailableInCart");
   useEffect(() => {
     (async () => {
@@ -30,24 +30,14 @@ export default function ProductDetails() {
     })();
   }, [id]);
 
-  const {
-    _id,
-    img,
-    name,
-    author,
-    price,
-    originalPrice,
-    isBestSeller,
-    category,
-    rating,
-  } = selectedProduct;
+  const { img, name, price, originalPrice, category } = selectedProduct;
 
   return selectedProduct.length === 0 ? (
     <Loader />
   ) : (
     <div className="product-details-container">
       <div className="product-details">
-        <img src={img} />
+        <img src={img} alt="" />
         <div className="product-details-info">
           <h2>{name}</h2>
           <div className="price">

@@ -1,12 +1,10 @@
-import CartDetails from "../Cart/CartDetails";
 import "./Checkout.css";
 import { CartContext } from "../../Context/CartContext";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import toastHandler from "../../Components/Notification/Toaster";
 
 export default function Checkout() {
-  const { cart, totalPrice, totalDiscount } = useContext(CartContext);
+  const { totalPrice } = useContext(CartContext);
 
   return (
     <div className="checkout-container">

@@ -3,8 +3,6 @@ import { CartContext } from "../../Context/CartContext";
 import CartCard from "./CartCard";
 import CartDetails from "./CartDetails";
 
-function displayOnCart() {}
-
 export default function Cart() {
   const { cart } = useContext(CartContext);
   return (
