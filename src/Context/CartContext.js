@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import axios from "axios";
 import toastHandler from "../Components/Notification/Toaster";
 
@@ -28,22 +28,6 @@ export function CartProvider({ children }) {
       )
     );
   };
-
-  const getCartData = async () => {
-    try {
-      const response = await axios.get("/api/user/cart", {
-        headers: {
-          authorization: encodedToken,
-        },
-      });
-      console.log(response.data.cart);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  useEffect(() => {
-    getCartData();
-  }, [cart]);
 
   const addToCartHandler = async (product) => {
     try {
