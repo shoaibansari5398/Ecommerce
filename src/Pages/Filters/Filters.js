@@ -75,6 +75,7 @@ export default function Filters() {
                 <input
                   type="checkbox"
                   key={category}
+                  value={category}
                   checked={filterState?.categoryFilter?.includes(category)}
                   onChange={() =>
                     filterDispatch({
