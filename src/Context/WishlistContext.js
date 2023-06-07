@@ -6,7 +6,7 @@ export const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState([]);
-  const encodedToken = localStorage.getItem("encodedToken");
+  const encodedToken = localStorage.getItem("token");
 
   const getWishlistData = async () => {
     try {

@@ -10,7 +10,7 @@ export function CartProvider({ children }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalDiscount, setTotalDiscount] = useState(0);
 
-  const encodedToken = localStorage.getItem("encodedToken");
+  const encodedToken = localStorage.getItem("token");
 
   const updateTotalPrice = (cart) => {
     const tprice = cart.reduce((acc, curr) => {
