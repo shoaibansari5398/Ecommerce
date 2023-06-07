@@ -12,7 +12,14 @@ const filterReducer = (state, action) => {
     case "RATING_FILTER":
       return { ...state, ratingFilter: action.payload };
     case "CATEGORY_FILTER":
-      return { ...state, categoryFilter: action.payload };
+      return {
+        ...state,
+        categoryFilter: state?.categoryFilter?.includes(action.payload)
+          ? state?.categoryFilter?.filter(
+              (category) => category !== action.payload
+            )
+          : [...state?.categoryFilter, action.payload],
+      };
     case "PRICE_SORT":
       return { ...state, sortByPriceFilter: action.payload };
     case "CLEAR_ALL":
