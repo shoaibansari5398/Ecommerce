@@ -9,18 +9,7 @@ export default function CartCard({ product }) {
   const { deleteCartHandler, increaseQuantity, decreaseQuantity } =
     useContext(CartContext);
 
-  const {
-    _id,
-    qty,
-    img,
-    name,
-    author,
-    price,
-    originalPrice,
-    isBestSeller,
-    category,
-    rating,
-  } = product;
+  const { _id, qty, img, name, price, originalPrice } = product;
 
   const productAvailableInWishlist = wishlist.some(
     (e) => e._id === product?._id
@@ -28,7 +17,7 @@ export default function CartCard({ product }) {
 
   return (
     <div className="product-details-card">
-      <img src={img} />
+      <img src={img} alt="" />
       <div class="details">
         <h3>{name}</h3>
         <div className="price">

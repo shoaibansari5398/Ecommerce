@@ -5,27 +5,16 @@ import { WishlistContext } from "../../Context/WishlistContext";
 import { CartContext } from "../../Context/CartContext";
 
 export default function WishlistCard({ product }) {
-  const { wishlist, removeFromWishlistHandler } = useContext(WishlistContext);
+  const { removeFromWishlistHandler } = useContext(WishlistContext);
   const { cart, addToCartHandler } = useContext(CartContext);
 
-  const {
-    _id,
-    qty,
-    img,
-    name,
-    author,
-    price,
-    originalPrice,
-    isBestSeller,
-    category,
-    rating,
-  } = product;
+  const { _id, img, name, price, originalPrice } = product;
 
   const productAvailableInCart = cart.some((e) => e._id === product?._id);
 
   return (
     <div className="product-details-card">
-      <img src={img} />
+      <img src={img} alt="" />
       <div class="details">
         <h3>{name}</h3>
         <div className="price">

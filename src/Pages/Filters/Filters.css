@@ -23,7 +23,7 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 }
 .rating-input {
   margin-left: 10px;
@@ -32,10 +32,8 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 }
 .price-values {
   display: flex;
-}
-.price-input {
 }

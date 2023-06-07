@@ -1,14 +1,6 @@
-import { useContext } from "react";
-import { AdddressContext } from "../../Context/AddressContext";
-import { AuthContext } from "../../Context/AuthContext";
-import Profile from "./Profile";
-import Address from "./Address";
-import { NavLink } from "react-router-dom";
 import "./Account.css";
 
 export default function Account() {
-  // const { address, setAddress } = useContext(AdddressContext);
-  const { authState } = useContext(AuthContext);
   return (
     // <div className="account-container">
     //   <NavLink to="/profile">Profile</NavLink>

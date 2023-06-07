@@ -21,7 +21,7 @@ export const WishlistProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => getWishlistData, []);
+  useEffect(() => getWishlistData);
 
   const addToWishlistHandler = async (product) => {
     const response = await axios.post(

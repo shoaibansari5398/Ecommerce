@@ -1,13 +1,10 @@
 import { useContext } from "react";
-import { ProductContext } from "../../Context/ProductContext";
 import { FiltersContext } from "../../Context/FiltersContext";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import "./Products.css";
-import { NavLink } from "react-router-dom";
 import Loader from "../../Components/Loader/Loader";
 
 export default function Products() {
-  const { state } = useContext(ProductContext);
   const { sortByPriceFilterHandler } = useContext(FiltersContext);
 
   return (
