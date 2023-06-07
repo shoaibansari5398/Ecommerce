@@ -32,3 +32,25 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media screen and (width<=800px) {
+  .cart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* justify-content: center; */
+    /* align-items: center; */
+  }
+}
+
+@media screen and (width<=500) {
+  .cart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    /* align-items: center; */
+    margin: 10px auto;
+    max-width: 400px;
+  }
+}
