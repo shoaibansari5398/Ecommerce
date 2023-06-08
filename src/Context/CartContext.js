@@ -40,6 +40,7 @@ export function CartProvider({ children }) {
       updateTotalPrice(response.data.cart);
       updateTotalDiscount(response.data.cart);
       toastHandler("success", "Added to the Cart");
+      console.log(encodedToken, "encodedTokens");
     } catch (error) {
       console.error(error);
     }
